@@ -1,0 +1,28 @@
+{
+  "name": "justroll",
+  "version": "1.0.0",
+  "description": "Just Roll is a real-time physics simulation (game?) that allows the user to live out there dreams of being an indestructable ball that rolls through an obstacle course. Just Roll allows the user to tilt the course in real time in order to get the ball to their destination. Just try not to fall off the level.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hashamim/justroll.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hashamim/justroll/issues"
+  },
+  "homepage": "https://github.com/hashamim/justroll#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "three": "^0.105.2",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.4"
+  }
+}
