@@ -4,7 +4,8 @@
   "description": "Just Roll is a real-time physics simulation (game?) that allows the user to live out there dreams of being an indestructable ball that rolls through an obstacle course. Just Roll allows the user to tilt the course in real time in order to get the ball to their destination. Just try not to fall off the level.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack:watch": "webpack --watch --mode=development"
   },
   "repository": {
     "type": "git",
