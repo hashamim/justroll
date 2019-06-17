@@ -6,3 +6,39 @@ body {
 canvas {
     display: block;
 }
+
+#start-modal {
+    background-image: url("../../assets/modal_bg.png");
+    display: flex;
+    background-color: transparent;
+}
+.modal {
+    background-color: rgba(0,0,0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal h1 {
+    color: #ff6ec7;
+    font-family: 'Teko', sans-serif;
+    font-weight: 700;
+    font-size: 128px;
+    font-style: italic;
+}
+
+.modal button {
+    background-color: #45ff14;
+    border-radius: 0;
+    border-style: none;
+    padding: 15px;
+    color: white;
+    font-family: 'Teko', sans-serif;
+    font-size: 32px;
+}

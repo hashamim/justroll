@@ -1,8 +1,8 @@
 import GameObject from './game_object';
 
 class DynamicObject extends GameObject{
-    constructor(scene, geometry, geometryParams, position, friction, restitution, mass, light) {
-        super(scene, geometry, geometryParams, position, friction, restitution, mass, light);
+    constructor(scene, mesh, position, rotation, light) {
+        super(scene, mesh, position, rotation, light);
 
         const m = new THREE.Matrix3();
 

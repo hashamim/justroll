@@ -1,33 +1,7 @@
 class GameObject{
-    constructor(scene, geometry, geometryParams, position, friction, restitution, mass, light){
-        const material = Physijs.createMaterial(
-            new THREE.MeshLambertMaterial({color: 0xFFFFFF,
-                                        polygonOffset: true,
-                                        polygonOffsetFactor: 1, // positive value pushes polygon further away
-                                        polygonOffsetUnits: 1}),
-            friction,
-            restitution,
-        );
+    constructor(scene, mesh, position, rotation, light){
         this.light = light;
-        switch(geometry){
-            case "sphere":
-                this.mesh = new Physijs.SphereMesh(
-                    new THREE.SphereGeometry(...geometryParams),
-                    material,
-                    mass
-                );
-
-                break;
-            case "box":
-                this.mesh = new Physijs.BoxMesh(
-                    new THREE.CubeGeometry(geometryParams),
-                    material,
-                    mass
-                );
-                break;
-            default:
-                throw "geometry undefined";
-        }
+        this.mesh = mesh;
         //showing edge lines
         const edges = new THREE.EdgesGeometry(this.mesh.geometry);
         this.edgeLines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000 }));
@@ -37,19 +11,23 @@ class GameObject{
         this.mesh.position.x = position.x;
         this.mesh.position.y = position.y;
         this.mesh.position.z = position.z;
-
+        
+        if(rotation){   
+            this.mesh.rotation.x = rotation.x;
+            this.mesh.rotation.y = rotation.y;
+            this.mesh.rotation.z = rotation.z;
+        }
         //add to scene
         scene.add(this.mesh);
 
+        //if object has a light add to scene
         if(light){
-            // scene.add(this.light);
+            scene.add(this.light);
             
-            // scene.addEventListener("update",()=>{
-            //     light.position.set(this.position().x, this.position().y, this.position().z);
-            // })
+            scene.addEventListener("update",()=>{
+                light.position.set(this.position().x, this.position().y, this.position().z);
+            })
         }
-        
-        this.position = this.position.bind(this);
     }
     position(){
         return this.mesh.position;

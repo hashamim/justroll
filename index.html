@@ -6,13 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ball</title>
     <link rel="stylesheet" href="src/css/main.css">
-</head>
+<link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet"></head>
 <body>
     <script type="text/javascript" src="js/three.min.js"></script>
     <script type="text/javascript" src="js/physi.js"></script>
     <script type="text/javascript" src="js/stats.js"></script>
     <script type="text/javascript" src="js/OutlineEffect.js"></script>
+    <script type="text/javascript" src="js/ThreeCSG.js"></script>
     <script type="text/javascript" src="dist/bundle.js" ></script>
     <main id="content"></main>
+    <div id="start-modal" class="modal">
+        <h1>Just Roll</h1>
+        <button onclick="startGame()">Start Game</button>
+    </div>
+    <div id="lose-modal" class="modal">
+        <h1>Game Over</h1>
+        <button onclick="startGame()">Try Again?</button>
+    </div>
+    <div id="win-modal" class="modal">
+        <h1>You Win!</h1>
+        <button onclick="returnToMenu()">Back to Menu</button>
+    </div>
 </body>
 </html>
