@@ -17,7 +17,7 @@ In Just Roll users will have to navigate
 ### Wireframe
 The app will have the HTML canvas in the center with menu controls such as play/pause and menu select at the top left.
 Social media links will be at the top right for interested persons. Mute button will appear left of the canvas
-![wireframes](js_wireframes.png)
+![wireframes](assets/js_wireframes.png)
 
 ### Architecture and Technologies
 This App will use the the following technologies
