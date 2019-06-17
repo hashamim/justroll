@@ -10,16 +10,16 @@ const playerControls = function(playerObject, camera, scene){
         }
         scene.addEventListener("update", ()=>{
             if (keyMap[UP]) {
-                playerObject.angularAccelerate(0, 0, -2);
+                playerObject.angularAccelerate(-2, 0, 0);
             }
             if (keyMap[DOWN]) {
-                playerObject.angularAccelerate(0, 0, 2);
+                playerObject.angularAccelerate(2, 0, 0);
             }
             if (keyMap[LEFT]) {
-                playerObject.angularAccelerate(-2);
+                playerObject.angularAccelerate(0,0,2);
             }
             if (keyMap[RIGHT]) {
-                playerObject.angularAccelerate(2);
+                playerObject.angularAccelerate(0,0,-2);
             }
         })
     }
