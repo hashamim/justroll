@@ -3,7 +3,8 @@ const playerControls = function(playerObject, camera, scene){
         const DOWN = 83;
         const LEFT = 65;
         const RIGHT = 68;
-        var keyMap = {}; // You could also use an array
+        var keyMap = {};
+        var isTouching;
         onkeyup = onkeydown = function (e) {
             e = e || event; // to deal with IE
             keyMap[e.keyCode] = e.type == 'keydown';
@@ -21,7 +22,8 @@ const playerControls = function(playerObject, camera, scene){
             if (keyMap[RIGHT]) {
                 playerObject.angularAccelerate(0,0,-2);
             }
-        })
+        });
+
     }
 
     export default playerControls;

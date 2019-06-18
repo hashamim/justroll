@@ -51,13 +51,13 @@ export const addGoalHole = function(scene, position) {
 
 export const addSpiralStaircase = function(scene, position){
     //parameters
-    const innerRadius = 10;
-    const outerRadius = 15;
+    const innerRadius = 15;
+    const outerRadius = 25;
     const height = 24;
     const numSteps = 24; //15 degrees each
 
     // computed parameters
-    const minsegmentWidth = outerRadius * 2 * 3 / numSteps;
+    const minsegmentWidth = outerRadius * 2 * 2.0 / numSteps;
     const steptHeightOffset = height / numSteps;
     const stepRadialOffset = 2 * Math.PI / numSteps;
     const segmentHeight = 0.5;

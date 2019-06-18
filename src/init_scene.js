@@ -4,6 +4,7 @@ import playerControls from "./controls";
 import { MeshBasicMaterial } from "three";
 import { addGoalHole, addSpiralStaircase } from "./game_objects/game_objects";
 import { generateGroundPane } from "./render_utils";
+import levels from "./levels";
 
 var initScene = function () {
     //renderer
@@ -31,7 +32,7 @@ var initScene = function () {
     //scene
     var texture = new THREE.TextureLoader().load("assets/bg_grad.png");
     scene = new Physijs.Scene;
-    var gravForce = new THREE.Vector3(0, -50, 0);
+    var gravForce = new THREE.Vector3(0, -150, 0);
     scene.setGravity(gravForce);
     scene.background = texture;
     scene.addEventListener(
@@ -98,18 +99,15 @@ var initScene = function () {
     )
     ground.position.y = -20;
     scene.add(ground);
-
-    const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -35));
-    goalPlane.mesh.addEventListener('collision', () => {
+    const endLevel = () => {
         cancelAnimationFrame(window.animationId);
         scene = null;
         camera = null;
         renderer = null;
         document.getElementById("win-modal").style.display = "flex";
-    })
-
-    addSpiralStaircase(scene, new THREE.Vector3(5, -20, -45));
-    generateGroundPane(scene, [5, 1, 30], new THREE.Vector3(-13, -27, -39), new THREE.Vector3(Math.PI * 5 / 6, 0, 0));
+    };
+    levels[0](scene, endLevel);
+    
     window.ground = ground;
     window.playerSphere = playerSphere;
 
@@ -143,12 +141,13 @@ var initScene = function () {
         }
     })
     requestAnimationFrame(render);
+    window.addEventListener('resize', function () {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+    });
 };
-window.addEventListener('resize', function () {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    renderer.setSize(width, height);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-});
+
 export default initScene;
