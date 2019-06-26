@@ -6,7 +6,7 @@ import { addGoalHole, addSpiralStaircase } from "./game_objects/game_objects";
 import { generateGroundPane } from "./render_utils";
 import levels from "./levels";
 
-var initScene = function () {
+var initScene = function (levels) {
     //renderer
     var effect, renderer, scene, camera, box;
     renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -35,12 +35,14 @@ var initScene = function () {
     var gravForce = new THREE.Vector3(0, -150, 0);
     scene.setGravity(gravForce);
     scene.background = texture;
-    scene.addEventListener(
-        'update',
-        function () {
+    const simStats = function () {
+        if(scene){
             scene.simulate(undefined, 2);
             physics_stats.update();
         }
+    }
+    scene.addEventListener(
+        'update', simStats
     );
 
     //camera
@@ -78,7 +80,7 @@ var initScene = function () {
     );
 
     const playerSphere = new DynamicObject(scene, playerMesh, { x: 1, y: 0, z: 0 }, null, playerLight);
-
+    window.playerSphere = playerSphere;
 
     playerControls(playerSphere, camera, scene);
     // Ground
@@ -100,20 +102,23 @@ var initScene = function () {
     ground.position.y = -20;
     scene.add(ground);
     const endLevel = () => {
+        debugger
         cancelAnimationFrame(window.animationId);
+        scene.removeEventListener('update',simStats);
         scene = null;
         camera = null;
         renderer = null;
-        document.getElementById("win-modal").style.display = "flex";
+        levels.shift();
+        if(levels.length > 0){
+            document.getElementById("next-modal").style.display = "flex";
+        } else {
+            document.getElementById("win-modal").style.display = "flex";
+        }
     };
+    window.playerSphere;
     levels[0](scene, endLevel);
-    
-    window.ground = ground;
-    window.playerSphere = playerSphere;
-
     window.scene = scene;
     const render = function () {
-
             scene.simulate(); // run physics
         //update camera position
         camera.position.x = playerSphere.mesh.position.x;
@@ -148,6 +153,7 @@ var initScene = function () {
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
     });
+    return scene;
 };
 
 export default initScene;
