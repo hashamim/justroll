@@ -56,6 +56,22 @@ const levels = [];
 
         }
     )
+    levels.push(
+        function (scene, cb) {
+            const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -80));
+            goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
+                if (otherObject === window.playerSphere.mesh) {
+                    debugger
+                    console.log(contactNormal);
+                    goalPlane.mesh.removeEventListener('collision')
+                    cb();
+                }
+            });
+
+            const obj = generateGroundPane(scene, [10,0.5,50], new THREE.Vector3(0, -20, -25), new THREE.Vector3(Math.PI/6,0,0));
+
+        }
+    )
     return levels;
 }
 
