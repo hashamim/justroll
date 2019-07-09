@@ -136,15 +136,15 @@ var initScene = function (levels) {
             document.getElementById("lose-modal").style.display = "flex";
         }
     };
-    document.addEventListener("keydown", (event) => {
-        switch (event.keyCode) {
-            case 73:
-                camera.rotation.x += 0.1;
-                return;
-            case 75:
-                camera.rotation.x -= 0.1;
-        }
-    })
+    // document.addEventListener("keydown", (event) => {
+    //     switch (event.keyCode) {
+    //         case 73:
+    //             camera.rotation.x += 0.1;
+    //             return;
+    //         case 75:
+    //             camera.rotation.x -= 0.1;
+    //     }
+    // })
     requestAnimationFrame(render);
     window.addEventListener('resize', function () {
         const width = window.innerWidth;
