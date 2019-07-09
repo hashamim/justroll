@@ -8,14 +8,23 @@ Just Roll uses collision detection to prevent the sphere from passing the course
 distance in the virtual 3D environment.
 
 ### Functionality and MVP
-In Just Roll users will have to navigate
-* A flat environment with no hazards (we'll go easy on them at first)
-* environments with obstacles pushing the ball away
+* basic ball controls
+* Create flat environment with no hazards (we'll go easy on you at first)
+* environments with obstacles that need to be pushed away
 * uneven ground surfaces
-* taking advantage of the ball's elasticity to bounce over hazards
+* taking advantage of the ball collision to create passages
+* verticality in a level
+* scoring player on time
+* menu
+* storing local or global high scores (more research needs to be done on this)
+* menu interface
+* add common sense button controls (arrow keys to move, enter to go to next level, esc to pause and retry)
+* sound on initial collision, user contact, and entering goal
+* (bonus) add particle effects on goal enter
+* (bonus) improve lighting effects
 
 ### Wireframe
-The app will have the HTML canvas in the center with menu controls such as play/pause and menu select at the top left.
+The app will have the HTML canvas take up the entire screen with menus functioning as modals.
 Social media links will be at the top right for interested persons. Mute button will appear left of the canvas
 ![wireframes](assets/js_wireframes.png)
 
