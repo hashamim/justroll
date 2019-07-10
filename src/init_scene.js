@@ -16,15 +16,15 @@ var initScene = function (level, winFunc) {
     document.getElementById('content').appendChild(renderer.domElement);
 
     //stats
-    const render_stats = new Stats();
-    render_stats.domElement.style.position = 'absolute';
-    render_stats.domElement.style.top = '0px';
-    render_stats.domElement.style.zIndex = 100;
-    document.getElementById('content').appendChild(render_stats.domElement);
+    // const render_stats = new Stats();
+    // render_stats.domElement.style.position = 'absolute';
+    // render_stats.domElement.style.top = '0px';
+    // render_stats.domElement.style.zIndex = 100;
+    // document.getElementById('content').appendChild(render_stats.domElement);
 
     const physics_stats = new Stats();
     physics_stats.domElement.style.position = 'absolute';
-    physics_stats.domElement.style.top = '50px';
+    physics_stats.domElement.style.top = '0px';
     physics_stats.domElement.style.zIndex = 100;
     document.getElementById('content').appendChild(physics_stats.domElement);
 
@@ -122,7 +122,7 @@ var initScene = function (level, winFunc) {
         renderer.render(scene, camera);
         // effect.render(scene, camera); // render the scene
         window.animationId = requestAnimationFrame(render);
-        render_stats.update(); //update render stats
+        // render_stats.update(); //update render stats
         if (playerSphere.position().y <= -150){
             window.gameState = 2;
             endTimer();
