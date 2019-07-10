@@ -8,7 +8,6 @@ const levels = [];
             const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -45, -65));
             goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal)=>{
                 if(otherObject === window.playerSphere.mesh){
-                    debugger
                     console.log(contactNormal);
                     goalPlane.mesh.removeEventListener('collision', )
                     cb();
@@ -24,7 +23,6 @@ const levels = [];
             const goalPlane = addGoalHole(scene, new THREE.Vector3(0,-20,-35));
             goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
                 if (otherObject === window.playerSphere.mesh) {
-                    debugger
                     console.log(contactNormal);
                     goalPlane.mesh.removeEventListener('collision')
                     cb();
@@ -39,39 +37,37 @@ const levels = [];
 
         }
     )
-    levels.push(
-        function (scene, cb) {
-            const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -55));
-            goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
-                if (otherObject === window.playerSphere.mesh) {
-                    debugger
-                    console.log(contactNormal);
-                    goalPlane.mesh.removeEventListener('collision')
-                    cb();
-                }
-            });
+    // levels.push(
+    //     function (scene, cb) {
+    //         const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -55));
+    //         goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
+    //             if (otherObject === window.playerSphere.mesh) {
+    //                 console.log(contactNormal);
+    //                 goalPlane.mesh.removeEventListener('collision')
+    //                 cb();
+    //             }
+    //         });
 
-            const material = generateGroundMaterial(0xe5e5e5);
-            const obj2 = generateDynamicCube(scene, [5, 25, 2], new THREE.Vector3(0, -5, -22));
+    //         const material = generateGroundMaterial(0xe5e5e5);
+    //         const obj2 = generateDynamicCube(scene, [5, 25, 2], new THREE.Vector3(0, -5, -22));
 
-        }
-    )
-    levels.push(
-        function (scene, cb) {
-            const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -80));
-            goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
-                if (otherObject === window.playerSphere.mesh) {
-                    debugger
-                    console.log(contactNormal);
-                    goalPlane.mesh.removeEventListener('collision')
-                    cb();
-                }
-            });
+    //     }
+    // )
+    // levels.push(
+    //     function (scene, cb) {
+    //         const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -80));
+    //         goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
+    //             if (otherObject === window.playerSphere.mesh) {
+    //                 console.log(contactNormal);
+    //                 goalPlane.mesh.removeEventListener('collision')
+    //                 cb();
+    //             }
+    //         });
 
-            const obj = generateGroundPane(scene, [10,0.5,50], new THREE.Vector3(0, -20, -25), new THREE.Vector3(Math.PI/6,0,0));
+    //         const obj = generateGroundPane(scene, [10,0.5,50], new THREE.Vector3(0, -20, -25), new THREE.Vector3(Math.PI/6,0,0));
 
-        }
-    )
+    //     }
+    // )
     return levels;
 }
 

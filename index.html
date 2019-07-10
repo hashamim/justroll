@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ball</title>
     <link rel="stylesheet" href="src/css/main.css">
-<link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet"></head>
+    <link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 <body>
     <script type="text/javascript" src="js/three.min.js"></script>
     <script type="text/javascript" src="js/physi.js"></script>
@@ -16,12 +20,33 @@
     <script type="text/javascript" src="dist/bundle.js" ></script>
     <main id="content"></main>
     <div id="start-modal" class="modal">
-        <h1>Just Roll</h1>
-        <button onclick="startGame()">Start Game</button>
+        <div class="left-menu">
+            <h2>Your Score</h2>
+            <div id="scores"></div>
+        </div>
+        <div class="center-menu">
+            <h1>Just Roll</h1>
+            <button onclick="startLevel()">Start Game</button>
+        </div>
+        <div class="right-menu">
+            <div class="controls">
+                <h2>Controls</h2>
+                <span>W or UP arrow -- forward</span>
+                <span>S or DOWN arrow -- backward</span>
+                <span>A or LEFT arrow -- left</span>
+                <span>D or RIGHT arrow -- right</span>
+            </div>
+            <div class="links">
+                <a target="_blank" href="https://linkedin.com/in/hasnainshamim"><i class="fab fa-linkedin"></i></a>
+                <a target="_blank" href="https://angel.co/hasnain-shamim"><i class="fab fa-angellist"></i></a>
+                <a target="_blank" href="https://github.com/hashamim"><i class="fab fa-github"></i></a>
+            
+            </div>
+        </div>
     </div>
     <div id="lose-modal" class="modal">
         <h1>Game Over</h1>
-        <button onclick="startGame()">Try Again?</button>
+        <button onclick="retryLevel()">Try Again?</button>
     </div>
     <div id="win-modal" class="modal">
         <h1>You Win!</h1>
@@ -29,7 +54,9 @@
     </div>
     <div id="next-modal" class="modal">
         <h1>Nice Job!</h1>
-        <button onclick="startGame()">Next Level</button>
+        <button onclick="startLevel()">Next Level</button>
     </div>
+    <h1 id="timer">
+    </h1>
 </body>
 </html>

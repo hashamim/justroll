@@ -1,13 +1,12 @@
 import GameObject from "./game_objects/game_object"
 import DynamicObject from "./game_objects/dynamic_object"
 import playerControls from "./controls";
-import { MeshBasicMaterial } from "three";
-import { addGoalHole, addSpiralStaircase } from "./game_objects/game_objects";
-import { generateGroundPane } from "./render_utils";
-import levels from "./levels";
+import { endTimer } from "./timer";
 
-var initScene = function (levels) {
+
+var initScene = function (level, winFunc) {
     //renderer
+    window.gameState = 0;
     var effect, renderer, scene, camera, box;
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -101,22 +100,18 @@ var initScene = function (levels) {
     )
     ground.position.y = -20;
     scene.add(ground);
+
+    //callBack to run if player wins
     const endLevel = () => {
-        debugger
+        window.gameState = 1;
+        winFunc(endTimer());
         cancelAnimationFrame(window.animationId);
         scene.removeEventListener('update',simStats);
         scene = null;
         camera = null;
         renderer = null;
-        levels.shift();
-        if(levels.length > 0){
-            document.getElementById("next-modal").style.display = "flex";
-        } else {
-            document.getElementById("win-modal").style.display = "flex";
-        }
     };
-    window.playerSphere;
-    levels[0](scene, endLevel);
+    level(scene, endLevel);
     window.scene = scene;
     const render = function () {
             scene.simulate(); // run physics
@@ -129,6 +124,8 @@ var initScene = function (levels) {
         window.animationId = requestAnimationFrame(render);
         render_stats.update(); //update render stats
         if (playerSphere.position().y <= -150){
+            window.gameState = 2;
+            endTimer();
             cancelAnimationFrame(window.animationId);
             scene = null;
             camera = null;
@@ -136,15 +133,6 @@ var initScene = function (levels) {
             document.getElementById("lose-modal").style.display = "flex";
         }
     };
-    // document.addEventListener("keydown", (event) => {
-    //     switch (event.keyCode) {
-    //         case 73:
-    //             camera.rotation.x += 0.1;
-    //             return;
-    //         case 75:
-    //             camera.rotation.x -= 0.1;
-    //     }
-    // })
     requestAnimationFrame(render);
     window.addEventListener('resize', function () {
         const width = window.innerWidth;
