@@ -37,7 +37,7 @@ This App will use the the following technologies
 
 ### Features
 Using object oriented programming, Just Roll has simple to make level design, simply spawn objects at a fixed position in Cartesian space with the properties that you want. Certain commonly used objects have their own wrapper class that make them even easier to spawn. Each level is a function that spawns objects in the scene and is called when the scene is initialized.
-```
+```javascript
 //levels.js
 function(scene, cb){
             const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -45, -65)); //spawn the goal
