@@ -36,7 +36,26 @@ This App will use the the following technologies
 * Webpack to bundle the files
 
 ### Features
+Using object oriented programming, Just Roll has simple to make level design, simply spawn objects at a fixed position in Cartesian space with the properties that you want. Certain commonly used objects have their own wrapper class that make them even easier to spawn. Each level is a function that spawns objects in the scene and is called when the scene is initialized.
+```
+//levels.js
+function(scene, cb){
+            const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -45, -65)); //spawn the goal
+            
+            //add an event listener to the goal that fires off if the win condition is met
+            goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal)=>{ 
+                if(otherObject === window.playerSphere.mesh){
+                    console.log(contactNormal);
+                    goalPlane.mesh.removeEventListener('collision', )
+                    cb();
+                }
+            });
 
+            addSpiralStaircase(scene, new THREE.Vector3(-20, -20, -55)); //add a spiral staircase
+            generateGroundPane(scene, [8, 1, 25], new THREE.Vector3(1, -20, -40)); //add a large flat area at a specified position and angle
+        }
+ ```
+ above is the code for the very first level
 ### Implementation Timeline
 **Day 1**
  - Get webpack and package.json running
