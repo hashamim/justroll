@@ -18,7 +18,6 @@ export function endTimer(){
 }
 
 function render(){
-    console.log("timer running");
     let currTime = currentTime();
     let centSec = "" + Math.floor((currTime % 1000) / 10)
     let seconds = currTime / 1000;
