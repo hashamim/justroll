@@ -32,6 +32,12 @@ class GameObject{
     position(){
         return this.mesh.position;
     }
+    remove(){
+        scene.remove(this.mesh);
+        if(this.light){
+            scene.remove(this.light);
+        }
+    }
 }
 
 export default GameObject;
