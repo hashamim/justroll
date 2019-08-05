@@ -1,5 +1,5 @@
 import { addGoalHole, addSpiralStaircase } from './game_objects/game_objects';
-import { DynamicObject } from './game_objects/dynamic_object';
+import DynamicObject from './game_objects/dynamic_object';
 import { generateGroundPane, generateGroundMaterial, generateDynamicCube } from './render_utils';
 function levelLoader(){
 const levels = [];
@@ -66,6 +66,32 @@ const levels = [];
 
             const obj = generateGroundPane(scene, [10,0.5,50], new THREE.Vector3(0, -20, -25), new THREE.Vector3(Math.PI/6,0,0));
 
+        }
+    )
+    levels.push(
+        function (scene, cb) {
+            const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -130));
+            goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
+                if (otherObject === window.playerSphere.mesh) {
+                    console.log(contactNormal);
+                    goalPlane.mesh.removeEventListener('collision')
+                    cb();
+                }
+            });
+
+            generateGroundPane(scene, [50, 1, 110], new THREE.Vector3(0, -40, -65)); //bottom
+            generateGroundPane(scene, [50, 20, 0.5], new THREE.Vector3(0, -30, -120)); //side
+
+            const roller = new DynamicObject(
+                scene,
+                new Physijs.CylinderMesh(
+                    new THREE.CylinderBufferGeometry(10, 10, 50, 10, 10),
+                    generateGroundMaterial(0x00ff00, 5),
+                    500
+                ),
+                new THREE.Vector3(0, -30, -30),
+                new THREE.Vector3(0, 0, Math.PI * 0.5)
+            )
         }
     )
     return levels;
