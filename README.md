@@ -35,8 +35,18 @@ This App will use the the following technologies
 * Web Audio API for sound generation
 * Webpack to bundle the files
 
+### How to use
+ * clone the repository and use webpack to save the changes of your source files to the distribution. Alternatively run `npm run webpack:watch` to have the bundle automatically update.
+ * make your own custom levels by modifying `src/levels.js` and following the instructions below
 ### Features
-Using object oriented programming, Just Roll has simple to make level design, simply spawn objects at a fixed position in Cartesian space with the properties that you want. Certain commonly used objects have their own wrapper class that make them even easier to spawn. Each level is a function that spawns objects in the scene and is called when the scene is initialized.
+Using object oriented programming, Just Roll has simple to make level design, simply spawn objects at a fixed position in Cartesian space with the properties that you want. Certain commonly used objects have their own wrapper class that make them even easier to spawn. 
+
+Each level is a function that spawns objects in the scene and is called when the scene is initialized.
+ * Each level automatically starts with a ball at location (0,0,0), and a starting platform at location (0,-20,0).
+ * Each level must have a a Goal. Add a goal using `addGoalHole(scene, position)`.
+ * Check `game_objects.js` for a list of prebuilt objects, otherwise checkout `static_object.js` and `dynamic_object.js` to spawn your own custom objects. These classes are built on top of physijs and THREEjs objects so knowledge of these libraries is heavily recommended
+ 
+ **Examples:**
 ```javascript
 //levels.js
 function(scene, cb){
@@ -55,23 +65,41 @@ function(scene, cb){
             generateGroundPane(scene, [8, 1, 25], new THREE.Vector3(1, -20, -40)); //add a large flat area at a specified position and angle
         }
  ```
- above is the code for the very first level
-### Implementation Timeline
-**Day 1**
- - Get webpack and package.json running
- - Learn 3.js well enough to render basic shape and skybox
+```javascript
+levels.push(
+        function (scene, cb) {
+            const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -130));
+            goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
+                if (otherObject === window.playerSphere.mesh) {
+                    console.log(contactNormal);
+                    goalPlane.mesh.removeEventListener('collision')
+                    cb();
+                }
+            });
+
+            generateGroundPane(scene, [50, 1, 110], new THREE.Vector3(0, -40, -65)); //bottom
+            generateGroundPane(scene, [50, 20, 0.5], new THREE.Vector3(0, -30, -120)); //side
+
+            const roller = new DynamicObject(
+                scene,
+                new Physijs.CylinderMesh(
+                    new THREE.CylinderBufferGeometry(10, 10, 50, 10, 10),
+                    generateGroundMaterial(0x00ff00, 5),
+                    500
+                ),
+                new THREE.Vector3(0, -30, -30),
+                new THREE.Vector3(0, 0, Math.PI * 0.5)
+            )
+        }
+    )
+ ```
  
- **Day 2**
- - have ball on a flat surface working
- 
- **Day 3**
+### Features in the Pipeline
  - attempt collisions and elastic properties of objects
- 
- **Day 4**
- flesh out interface
+ - more realistic friction
+ - flesh out interface
  - play/pause
  - mute
  - social media links
- 
- **Bonus**
- Get jump and bounce working
+ - level select
+ - Get jump and bounce working
