@@ -7,22 +7,6 @@ to their destination. Just try not to fall off the level.
 Just Roll uses collision detection to prevent the sphere from passing the course and landmarks for helping the user gauge
 distance in the virtual 3D environment.
 
-### Functionality and MVP
-* basic ball controls
-* Create flat environment with no hazards (we'll go easy on you at first)
-* environments with obstacles that need to be pushed away
-* uneven ground surfaces
-* taking advantage of the ball collision to create passages
-* verticality in a level
-* scoring player on time
-* menu
-* storing local or global high scores (more research needs to be done on this)
-* menu interface
-* add common sense button controls (arrow keys to move, enter to go to next level, esc to pause and retry)
-* sound on initial collision, user contact, and entering goal
-* (bonus) add particle effects on goal enter
-* (bonus) improve lighting effects
-
 ### Wireframe
 The app will have the HTML canvas take up the entire screen with menus functioning as modals.
 Social media links will be at the top right for interested persons. Mute button will appear left of the canvas
@@ -103,3 +87,5 @@ levels.push(
  - social media links
  - level select
  - Get jump and bounce working
+ - (bonus) add particle effects on goal enter
+ - (bonus) improve lighting effects
