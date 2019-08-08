@@ -1,6 +1,9 @@
 import { addGoalHole, addSpiralStaircase } from './game_objects/game_objects';
 import DynamicObject from './game_objects/dynamic_object';
 import { generateGroundPane, generateGroundMaterial, generateDynamicCube } from './render_utils';
+
+// every scene starts with a ball and a starting platform, the ball starts at (0,0,0)
+// the starting platform starts at (0,-20,0)
 function levelLoader(){
 const levels = [];
     levels.push(
