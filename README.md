@@ -8,20 +8,20 @@ Just Roll uses collision detection to prevent the sphere from passing the course
 distance in the virtual 3D environment.
 
 ### Wireframe
-The app will have the HTML canvas take up the entire screen with menus functioning as modals.
+The app has an HTML canvas take up the entire screen with menus functioning as modals.
 Social media links will be at the top right for interested persons. Mute button will appear left of the canvas
 ![wireframes](assets/js_wireframes.png)
 
 ### Architecture and Technologies
-This App will use the the following technologies
+This App uses the the following technologies
 * Vanilla Javascript for DOM physics logic
 * 3.js for 3D rendering
 * Web Audio API for sound generation
 * Webpack to bundle the files
 
 ### How to use
- * clone the repository and use webpack to save the changes of your source files to the distribution. Alternatively run `npm run webpack:watch` to have the bundle automatically update.
- * make your own custom levels by modifying `src/levels.js` and following the instructions below
+ * clone the repository and use webpack to save the changes of your source files to the distribution bundle.js file. Alternatively run `npm run webpack:watch` to have the bundle automatically update as you update the source files.
+ * make your own custom levels by modifying `src/levels.js` and following the examples below
 ### Features
 Using object oriented programming, Just Roll has simple to make level design, simply spawn objects at a fixed position in Cartesian space with the properties that you want. Certain commonly used objects have their own wrapper class that make them even easier to spawn. 
 
