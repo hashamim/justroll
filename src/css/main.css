@@ -71,6 +71,15 @@ canvas {
 .left-menu h2{
     font-size: 1.5em;
 }
+
+.left-menu h3 {
+    cursor: pointer;
+}
+
+.left-menu h3:active {
+    color: #ff6ec7;
+}
+
 .right-menu {
     font-family: 'Teko', sans-serif;
     font-size: 24px;

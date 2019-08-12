@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         levelScoresList.setAttribute("id",`level${ind}`);
         let levelTitle = document.createElement("H3");
         levelTitle.innerHTML = `Level ${ind}:`;
+        levelTitle.setAttribute("onclick", `startLevel(${ind - 1})`);
         scoreBoard.appendChild(levelTitle);
         scoreBoard.appendChild(levelScoresList);
     })
@@ -37,7 +38,8 @@ for(let i = 0; i < scores.length; i++){
 }
 let currentLevel = -1;
 window.startLevel = startLevel;
-function startLevel(){
+function startLevel(firstLevel = currentLevel){
+    currentLevel = firstLevel;
     currentLevel++;
     var content = document.getElementById("content");
     while (content.firstChild) {
