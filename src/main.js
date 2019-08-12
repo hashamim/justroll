@@ -27,10 +27,11 @@ document.addEventListener("DOMContentLoaded",()=>{
         let levelScoresList = document.createElement("UL");
         levelScoresList.setAttribute("id",`level${ind}`);
         let levelTitle = document.createElement("H3");
-        levelTitle.innerHTML = `Level ${ind}:`;
+        levelTitle.innerHTML = `Level ${ind}`;
         levelTitle.setAttribute("onclick", `startLevel(${ind - 1})`);
         scoreBoard.appendChild(levelTitle);
         scoreBoard.appendChild(levelScoresList);
+        levelScoresList.style.padding = "0";
     })
 })
 for(let i = 0; i < scores.length; i++){

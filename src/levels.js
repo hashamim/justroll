@@ -11,7 +11,6 @@ const levels = [];
             const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -45, -65));
             goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal)=>{
                 if(otherObject === window.playerSphere.mesh){
-                    console.log(contactNormal);
                     goalPlane.mesh.removeEventListener('collision', )
                     cb();
                 }
@@ -26,7 +25,6 @@ const levels = [];
             const goalPlane = addGoalHole(scene, new THREE.Vector3(0,-20,-35));
             goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
                 if (otherObject === window.playerSphere.mesh) {
-                    console.log(contactNormal);
                     goalPlane.mesh.removeEventListener('collision')
                     cb();
                 }
@@ -45,7 +43,6 @@ const levels = [];
             const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -55));
             goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
                 if (otherObject === window.playerSphere.mesh) {
-                    console.log(contactNormal);
                     goalPlane.mesh.removeEventListener('collision')
                     cb();
                 }
@@ -61,7 +58,6 @@ const levels = [];
             const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -80));
             goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
                 if (otherObject === window.playerSphere.mesh) {
-                    console.log(contactNormal);
                     goalPlane.mesh.removeEventListener('collision')
                     cb();
                 }
@@ -76,7 +72,6 @@ const levels = [];
             const goalPlane = addGoalHole(scene, new THREE.Vector3(0, -20, -130));
             goalPlane.mesh.addEventListener('collision', (otherObject, vel, rot, contactNormal) => {
                 if (otherObject === window.playerSphere.mesh) {
-                    console.log(contactNormal);
                     goalPlane.mesh.removeEventListener('collision')
                     cb();
                 }
