@@ -1,4 +1,6 @@
 ## [Just Roll](http:/hashamim.github.io/justroll "Live Site") - A Javascript based 3D Physics Game
+![Preview](assets/justroll.gif "Just Roll")
+
 ### Background and Overview
 Just Roll is a real-time physics simulation (game?) that allows the user to live out there dreams of being an indestructable ball
 that rolls through an obstacle course. Just Roll allows the user to tilt the course in real time in order to get the ball
